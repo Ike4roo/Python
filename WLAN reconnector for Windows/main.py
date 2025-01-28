@@ -17,10 +17,6 @@ ssid_name = 'WiFi_SSID'
 #PS: to check it, go to Network Connections list and copy name of connection you want
 #PPS: Before put SSID, your machine should be already authorized in the network with this SSID
 
-#----//----//----//----//----//----//----//----//----
-#----//----//----//----//----//----//----//----//----
-#----//----//----//----//----//----//----//----//----
-
 #Don't make any changes below if you don't know what for!
 
 #What lang
