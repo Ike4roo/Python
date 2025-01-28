@@ -2,7 +2,7 @@
 
 Just a small game Tetris for terminal using characters as graphics
 
-If you are an admin who wants to take a break directly in cosole and has python3 installed, try
+If you are an admin or programmer who wants to take a break directly in cosole and has python3 installed, try
 
 Depends on `keyboard` for realtime asyncronuous interaction
 
