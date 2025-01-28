@@ -23,10 +23,7 @@ ssid_name = 'WiFi_SSID'
 
 #Don't make any changes below if you don't know what for!
 
-
-
-
-#проверяем статус подключения для одного из языков    
+#What lang
 def lang(os_lang):
     if 'en_EN' in os_lang:
         iface_stat_name = 'Connected'
@@ -43,7 +40,7 @@ def lang(os_lang):
     return iface_stat_name
 
 
-#Выводим сообщение txt_msg с типом msg_type
+#Message txt_msg with type msg_type
 def msg(txt_msg, msg_type):
     if msg_type == 'warning':
         mb.showwarning('Warning',txt_msg)
@@ -55,7 +52,7 @@ def msg(txt_msg, msg_type):
         print('error occured transferring type of message!')
     return 0
 
-#проверяем админские права
+#admin rights
 def admin():
     try:
         return os.getuid() == 0
@@ -64,7 +61,7 @@ def admin():
 
 
 
-#проверяем текущий статус интерфейса
+#Interface status
 def check_iface_stat():
     if iface_stat_name in interface:
         iface_stat = 'Up'
@@ -75,14 +72,14 @@ def check_iface_stat():
         connect()
     return iface_stat
 
-#функция записи в файл
+#func file write
 def write_file():
     with open('history.txt', 'a', encoding = encode) as file:
         file.write('At: ' + now + ' ' + interface_name + ' was ' + iface_stat + '\n')
         #file.write(locale check-word is ' + iface_stat_name + ')
     file.close
 
-#функция поднятия интерфейса
+#interface up func
 def connect():
     os.system('netsh wlan connect name=' + ssid_name + ' ssid=' + ssid_name + ' interface=' + interface_name)
 
@@ -91,16 +88,16 @@ def connect():
 
 #----//----//----//----//----//----//----//----//-----
 
-#Получаем текущее время на машине
+#Time on a machine
 now = time.ctime()
 
-#определяем настроенную локаль ОС
+#Locale
 os_lang = locale.getdefaultlocale()
 
-#проверяем статус подключения, конвертируем из байтов, передаем в переменную
+#Connection status
 netsh_interface = subprocess.check_output('netsh interface show interface ' + interface_name, shell=True)
 interface = netsh_interface.decode('cp866')
-#запускаем функцию получения слова в зависимости от языка
+#Language <-> what func
 iface_stat_name = lang(os_lang)
 iface_stat = check_iface_stat()
 
